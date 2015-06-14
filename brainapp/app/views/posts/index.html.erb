@@ -1,0 +1,50 @@
+<!-- <p> Index des posts: app/views/posts/index.html.erb </p> -->
+<p class="posts-index-links">
+<%= link_to(new_post_path) do %>
+	<% @rand_color_npost = ['#91bd09', 'rgb(169, 1, 75);', '#00ADEE;', '#800080', 'rgb(45, 174, 191);', 'rgb(227, 49, 0);', '#e22092', 'rgb(255, 92, 0);', 'rgb(255, 181, 21);'].sample %>
+  <a href="<%= new_post_path %>" class="welcome-link" style="background-color: <%= @rand_color_npost %>"> New brainPost! </a>
+<% end %>
+</p>
+
+<br />
+<h4 style="text-align: center; margin-top: -20px;"> - All the brainposts -</h4>
+<% @posts.each do |post| %>
+    
+    <div class="brainPost">
+    	<h3 class="brainPost-title"><%= post.title %></h3>
+    	<p class="brainPost-dates">Added on: <%= post.created_at %> | Last edited on: <% if post.updated_at %> <%= post.updated_at %> <% else %> <%= post.created_at %> <% end %> </p>
+    	<!-- <p class="brainPost-techs">Techs: < %= #post.techs % ></p> --> <!-- Nb: it may be nice to have an ajaxsearch done when we actuallt click on one of the 'techs' links (..) -->
+    	<!-- WIP test to allow each to have its own link ;p -->
+    	<p class="brainPost-techs">Techs: 
+    	<% @techs = post.techs.split(", "); %>
+    	<% @techs.each do |tech| %>
+    		<!-- extract a random color from the following array: green, cyan, blue, violet, magenta, red, pink, orange, yellow, & use it the style of the tech-link (..) -->
+    		<% @rand_color = ['#91bd09', 'rgb(169, 1, 75);', '#00ADEE;', '#800080', 'rgb(45, 174, 191);', 'rgb(227, 49, 0);', '#e22092', 'rgb(255, 92, 0);', 'rgb(255, 181, 21);'].sample %>
+    		<a href="#" class="tech-link" style="background-color: <%= @rand_color %>"><%= tech %></a>
+    	<% end %>
+    	</p>
+    	<!-- <td><%#=post.sources %></td> --> <!-- line below allows HTML tags/strings rendering from the 'post.content' -->
+    	<!-- <p class="brainPost-sources">Sources: < %= #post.sources.html_safe %></p> --> <!-- so that I can type <a href="..." directly during posts editing (..) -->
+    	<!-- WIP test to allow each to have its own 'link' ;p -->
+    	<p class="brainPost-sources">Sources: 
+    	<% @sources = post.sources.html_safe.split(", "); %>
+    	<% @sources.each do |source| %>
+    		<a href="#" class="source-link"><%= source %></a>
+    	<% end %>
+    	</p>
+    	<!-- a spacer to for a faster reading (..) -->
+    	<span class="brainPost-delimiter"></span>
+    	<!-- <td><%#=post.content %></td> --> <!-- line below allows HTML tags/strings rendering from the 'post.content' -->
+    	<div class="brainPost-content"><%= post.content.html_safe %></div> <!-- so that I can have HTML tags in the posts content (..) -->
+    	<div class="brainPost-navlinks">
+    		<%= link_to 'Destroy', post, :class => "ios-button-dark", confirm: 'Are you sure?', method: :delete %>
+    		<%= link_to 'Edit', edit_post_path(post), :class => "ios-button-dark" %>
+    		<%= link_to 'Show', post, :class => "ios-button-dark" %> 
+    		 
+    		<a href="#" class="addToSearchStackBtn ios-button-light"> Add to Search-Stack </a>
+    		<a href="#" class="addToSnippetsBtn ios-button-light"> Add to Snippets </a>
+    	</div>
+    		
+    </div>
+  
+<% end %>

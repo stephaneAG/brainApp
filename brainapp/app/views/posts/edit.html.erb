@@ -1,0 +1,10 @@
+<p> Edit des posts: app/views/posts/edit.html.erb </p>
+<h1>Editing post</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @post %> |
+<%= link_to 'Back', posts_path %>
+<!-- the following edit redirects to custom pathes ( the index of the App instead of the 'posts_path') (> cause I often add notes by 10s' ;D ) -->
+<%= link_to 'Back to root using "root_url"', root_url %>
+<%= link_to 'Back to root using ":root"', :root %>

@@ -1,0 +1,38 @@
+<p> _form des posts: app/views/posts/_form.html.erb </p>
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :techs %><br />
+    <%= f.text_field :techs %>
+  </div>
+  <div class="field">
+    <%= f.label :sources %><br />
+    <%= f.text_field :sources %>
+  </div>
+  <div class="field">
+    <%= f.label :content %> <a id="addCodeBtn">add code</a><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

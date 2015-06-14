@@ -1,0 +1,111 @@
+<html>
+
+<head>
+	<title> brainApp | neatFramework </title>
+
+<!-- oldest mobile meta tag: tell browser that scaling is unnecessary -->
+	<meta name="HandheldFriendly" content="true" />
+	
+	<!-- IOS Specific -->
+	<!-- hides the iphone status bar / the safari-like top when launched from Springboard-->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	
+	<!-- prevent expected telephone numbers to be automatically formatted (..) -->
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- preventing scaling-->
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width" />
+	<!-- <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no" /> --> <!-- WIP: when set, height=device-height provoques bugs in layout -->
+	
+	<!-- Media Queries for responsive / adaptive design -->
+	<link rel="stylesheet" href="css/neatFramework_style.css" /> <!-- basic stylesheet (for everyone) -->
+	<link rel="stylesheet" media="screen and (max-width: 1280px)" href="css/neatFramework_max1280px.css" /> <!-- petite rŽsolution , infŽrieure ˆ 1280px -->
+	
+	<!-- iPad MediaQueries CSS stylesheet -->
+	<link rel="stylesheet" href="css/neatFramework_styleWithMediaQueriesIPAD.css" /> <!-- general / portrait / landscape stylesheet for iPad -->
+	
+	<!-- iPod MediaQueries CSS stylesheet -->
+	<link rel="stylesheet" href="css/neatFramework_styleWithMediaQueriesIPOD.css" /> <!-- general / portrait / landscape stylesheet for iPod -->
+	
+	<!-- Google Code Prettifier, aka 'prettyPrinter' -->
+	<link href="css/prettify.css" type="text/css" rel="stylesheet" />
+  	<link href="css/sunburst.css" type="text/css" rel="stylesheet" />
+  	<script type="text/javascript" src="js/prettify.js"></script>  	
+  	<!-- Rails necessary tags -->
+  	<%= stylesheet_link_tag    "application", :media => "all" %>
+  	<%#= javascript_include_tag "application" %> <!-- seems to provoque ''Sprockets::CircularDependencyError in Home#index'  (..)-->
+  	<%= csrf_meta_tags %>
+
+</head>
+
+<body>
+
+<div id="main-wrapper">
+		
+		<!-- [ iOS only -> start ] used only on iOS by now, as a background when in standalone/fullscreen mode -->
+			<div id="iosNotInStandaloneSpacer"> 
+				<!-- ios new spacer -->
+			</div>
+		<!-- [ iOS only -> end ] -->
+		
+		<!-- [ actual app -> start ] -->
+			<div id="app-header">
+				<!-- div#app-header --> <h2 id="app-title">brainApp v0.1a</h2> <p>LOGIN | PARAMS | ABOUT </p>
+			</div>
+			<div id="app-search">
+				<!-- div#app-search [ > 'logHello();' onkeyup works ] --> <input id="ajax-search-input" name="ajax-search-input" type="text" value="" placeholder="Type your search here ... or hit the mike!" onkeyup="" />
+				<!-- and the speech input ;p --> <input id="speech-search-input" lang="en" type="text" onspeechchange="neatFramework.brainApp_module_handleSpeechInputForSearch(this.value)" onwebkitspeechchange="neatFramework.brainApp_module_handleSpeechInputForSearch(this.value)" x-webkit-speech speech />
+			</div>
+			<div id="app-body">
+				<!-- div#app-body -->
+				<div id="app-content">
+					<%= yield %> <!-- yup, some Ruby,actually ;D -->
+				</div>
+				<div id="app-search-results">
+					div#app-search-results the search results will be added here using ajax
+				</div>
+			</div>
+		<!-- [ actual app -> end ] -->
+		
+		
+		
+		
+		<!-- [ EVERYTHING BELOW IS 'OLD JUNK-CODE' FROM WIP BUILDING/IMPLM, OF THE 'neatFramework' (..)  ] -->
+		<!-- <div id="header">
+			<h1> JS framework in modules </h1>
+			<a id="indexlink" class="ajaxlink" href="./index.html"> goto / load index </a>
+			<a id="page1" class="ajaxlink" href="./newtarget.html"> goto / load target </a>
+			<a id="page2" class="ajaxlink" href="./testpage.html"> goto / load testpage </a>
+			<a id="page3" class="ajaxlink" href="./fullscreen.html"> goto / load fullpage </a>
+		</div> --> <!-- end <div id="header"> -->
+		
+		<!-- <div id="content">
+			
+		</div> --> <!-- end <div id="content"> -->
+		
+		<!-- <div id="longHeightContent" class="scrollableOnY">
+			<p> I LIKE IT WHEN IT WORKS!</p>
+			<p> I LIKE IT WHEN IT WORKS!</p>
+			<p> I LIKE IT WHEN IT WORKS!</p>
+			
+			</div> --> <!-- end <div id="longHeightContent" class="scrollableOnY"> -->
+		
+		
+</div> <!-- end main-wrapper div -->
+
+</body>
+
+<!-- the followings shold be auto-loaded by Rails, as present in the assets/javascript directory (..) -->
+<!-- re-uncommented atfer solving the problem 'another way': -->
+<!-- after comenting-out :" < % #= javascript_include_tag "application" % > " that seemed to provoque 'Sprockets::CircularDependencyError in Home#index', seems ok  (..) -->
+<!--  -->
+<script src="./js/neatFramework_helpers_module.js"></script>
+<script src="./js/neatFramework_iOS_module.js"></script>
+<script src="./js/neatFramework_utils_module.js"></script>
+<script src="./js/neatFramework_views_module.js"></script>
+<script src="./js/neatFramework_network_module.js"></script>
+<script src="./js/neatFramework_brainApp_module.js"></script>
+<script src="./js/app_logic.js"></script>
+
+</html>

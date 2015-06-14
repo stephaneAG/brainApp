@@ -1,0 +1,75 @@
+		@media only screen and (device-width: 480px) {
+			/* For general iPod/iPhone layouts */ /* nb: overriden by ay of the above @media queries (using orientation) */
+			body{
+				//background-color: fuchsia;
+			}
+		}
+		
+		
+		@media only screen and (max-device-width: 480px) {
+    	/* iPhone 3G layouts */
+    		body{
+				background-color: yellow;
+				
+			}
+		}
+		
+		@media only screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    	/* iPhone 4 layouts */
+    		body{
+				background-color: maroon; /* works, and fallback to above if not set*/
+				
+			}
+		}
+		
+
+		@media only screen and (max-device-width: 320px) and (orientation:portrait) {
+			/* For portrait layouts only */
+			body{
+				background-color: lime;
+			}
+			
+			div#iosNotInStandaloneSpacer{
+				height: 20px;
+				background-color: fuchsia;
+			}
+			
+			/* header and header stuff */
+			div#header{
+				background-color: gray;
+				height: 308px;
+			}
+
+			div#header h1{
+				font-family: "Helvetica";
+				font-size: 29px;
+				color: white;
+				/*margin-top: 20px;*/ /* device semi-translucent status bar height */
+			}
+			
+		}
+
+		@media only screen and (max-device-width: 480px) and (orientation:landscape) {
+			/* For landscape layouts only */
+			body{
+				background-color: aqua;
+			}
+			
+			div#iosNotInStandaloneSpacer{
+				height: 20px;
+				background-color: fuchsia;
+			}
+			
+			/* header and header stuff */
+			div#header{
+				background-color: white;
+				height: 230px;
+			}
+
+			div#header h1{
+				font-family: "Helvetica";
+				font-size: 29px;
+				color: black;
+				/*margin-top: 20px;*/ /* device semi-translucent status bar height */
+			}
+		}

@@ -1,0 +1,93 @@
+<div id="query-results-div">
+<p> --------------------------------- AJAXSEARCH RESULTS VIEW BEGIN --------------------------------- </p>
+<!--
+<p> ( app/views/home/ajaxsearch.html.erb ) </p>
+
+<p> Hi there! This will be I hope the text returned by the wip 'ajax autocomplete search' initiated using javascript (..) </p>
+<p> the URL to the 'ajaxsearch' definition in 'home_controller.rb' & 'routes.rb' may be like the following two: </p>
+<p> http://localhost:3000/ajaxsearch?lookingfor=debian%20mk802%20linux </p>
+<p> http://localhost:3000/ajaxsearch?lookingfor=debian mk802 linux </p> -->
+<span></span>
+<p> the '@searchdata' fetched looks like this , in 'raw form' : <%= @searchdata %> </p>
+<p> the 'searchdata_array', wich is actually @searchdata splitted by " ", gets printed like the following: </p>
+<% @searchdata_array.each do |search_element| %>
+	<p> <%= search_element %> </p>
+<% end %>
+
+
+<!-- the 'fully matching' titles posts logic (..) -->
+
+<h3> the 'fully matching' titles posts, wich is actually all the posts having a title that 'MATCHES' ALL our search criterias, are the following: </h3>
+<span></span>
+
+<% if @fully_matching_titles_posts.empty? %>
+  <p> No 'fully matching' titles posts were found, sorry! </p>
+<% else %>
+  
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Techs</th>
+    <th>Sources</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @fully_matching_titles_posts.each do |post| %>
+  <tr>
+    <td><%= post.name %></td>
+    <td><%= post.title %></td>
+    <td><%= post.techs %></td>
+    <td><%= post.sources %></td>
+    <td><%= post.content %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+  
+<% end %>
+
+<!-- the 'fully containing' titles posts logic (..) -->
+
+<h3> the 'fully containing' titles posts, wich is actually all the posts having a title that 'CONTAINS' ALL our search criterias, are the following: </h3>
+<span></span>
+
+<% if @matching_titles_posts.empty? %>
+  <p> No 'fully containing' titles posts were found, sorry! </p>
+<% else %>
+  
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Techs</th>
+    <th>Sources</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @matching_titles_posts.each do |post| %>
+  <tr>
+    <td><%= post.name %></td>
+    <td><%= post.title %></td>
+    <td><%= post.techs %></td>
+    <td><%= post.sources %></td>
+    <td><%= post.content %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+  
+<% end %>
+
+<p> --------------------------------- AJAXSEARCH RESULTS VIEW END --------------------------------- </p>
+</div>

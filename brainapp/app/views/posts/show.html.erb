@@ -1,0 +1,35 @@
+<p> Show des posts: app/views/posts/show.html.erb </p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @post.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @post.title %>
+</p>
+
+<p>
+  <b>Techs:</b>
+  <%= @post.techs %>
+</p>
+
+<p>
+  <b>Sources:</b>
+  <%= @post.sources %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%#= @post.content %> <!-- line below allows HTML tags/strings rendering from the 'post.content' -->
+  <%= @post.content.html_safe %>
+</p>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+<!-- the following edit redirects to custom pathes ( the index of the App instead of the 'posts_path') (> cause I often add notes by 10s' ;D ) -->
+<%= link_to 'Back to root using "root_url"', root_url %>
+<%= link_to 'Back to root using ":root"', :root %>

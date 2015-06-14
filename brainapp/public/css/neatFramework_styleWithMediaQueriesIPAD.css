@@ -1,0 +1,67 @@
+		@media only screen and (device-width: 768px) {
+			/* For general iPad layouts */ /* nb: overriden by ay of the above @media queries (using orientation) */
+			document{
+				//-webkit-overflow-scrolling: none;
+				-webkit-scrolling: none;
+			}
+			body{
+				background-color: fuchsia;
+				width: 100%;
+				overflow: hidden;
+			}
+		}
+
+		@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+			/* For portrait layouts only */
+			body{
+				background-color: yellow;
+			}
+			
+			div#iosNotInStandaloneSpacer{
+				height: 20px;
+				//display: block;
+				background-color: red;
+			}
+			
+			/* header and header stuff */
+			div#header{
+				background-color: black;
+				//height: 164px;
+				height: 308px;
+			}
+
+			div#header h1{
+				font-family: "Helvetica";
+				font-size: 29px;
+				color: white;
+				/*margin-top: 20px;*/ /* device semi-translucent status bar height */
+			}
+			
+		}
+
+		@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+			/* For landscape layouts only */
+			body{
+				background-color: aqua;
+			}
+			
+			div#iosNotInStandaloneSpacer{
+				height: 20px;
+				//display: block;
+				background-color: red;
+			}
+			
+			/* header and header stuff */
+			div#header{
+				background-color: white;
+				//height: 124px;
+				height: 230px;
+			}
+
+			div#header h1{
+				font-family: "Helvetica";
+				font-size: 29px;
+				color: black;
+				/*margin-top: 20px;*/ /* device semi-translucent status bar height */
+			}
+		}

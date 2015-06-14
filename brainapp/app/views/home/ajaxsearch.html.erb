@@ -1,0 +1,81 @@
+<div id="query-results-div">
+<p> --------------------------------- AJAXSEARCH RESULTS VIEW BEGIN --------------------------------- </p>
+<p> Search criterias : <%= @searchdata %> </p>
+
+<!-- the 'fully matching' title post logic (..) -->
+<h3> the 'fully matching' post, wich is actually the post having a title that 'FULLY MATCHES' ALL our search criterias: </h3>
+<span></span>
+<% if @the_right_post.empty? %>
+  <p> THE post your looking for were not found, SORRY !!! </p>
+<% else %>
+	<p> we found THAT "Post of Yours" ;D </p>
+	
+	<table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Techs</th>
+    <th>Sources</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @the_right_post.each do |post| %>
+  <tr>
+    <td><%= post.name %></td>
+    <td><%= post.title %></td>
+    <td><%= post.techs %></td>
+    <td><%= post.sources %></td>
+    <td><%= post.content %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+	
+<% end %>
+
+<!-- the 'fully matching' titles posts logic (..) -->
+<!-- deleted cause the above works way better (..) ;D -->
+
+<!-- the 'fully containing' titles posts logic (..) -->
+<h3> the posts whose titles fully matches your search criterias: </h3>
+<span></span>
+
+<% if @matching_titles_posts.empty? %>
+  <p> No posts whose titles fully matched all your search criterias were found, sorry! </p>
+<% else %>
+  
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Techs</th>
+    <th>Sources</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @matching_titles_posts.each do |post| %>
+  <tr>
+    <td><%= post.name %></td>
+    <td><%= post.title %></td>
+    <td><%= post.techs %></td>
+    <td><%= post.sources %></td>
+    <td><%= post.content %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+  
+<% end %>
+
+<p> --------------------------------- AJAXSEARCH RESULTS VIEW END --------------------------------- </p>
+</div>
